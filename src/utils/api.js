@@ -13,7 +13,7 @@ function resolveApiBase() {
   if (import.meta.env.DEV) {
     return ''
   }
-  return typeof window !== 'undefined' ? '' : 'http://localhost:5000'
+  return typeof window !== 'undefined' ? '' : 'https://financecrm-backend.onrender.com'
 }
 
 const API_BASE = resolveApiBase()
