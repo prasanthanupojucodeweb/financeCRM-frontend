@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    height: 100%;
+    background: #ffffff;
+  }
+
+  body {
+    height: 100%;
+    margin: 0;
+    background: #ffffff;
+    color: #0f172a;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+      Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  }
+
+  #app {
+    min-height: 100%;
+    background: #ffffff;
+  }
+}
+
+@keyframes authBlobFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) scale(1.05);
+  }
+}
+
+@keyframes authCardIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes authPanelFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.auth-page {
+  isolation: isolate;
+}
+
+.auth-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(8px);
+  opacity: 0.35;
+  animation: authBlobFloat 9s ease-in-out infinite;
+}
+
+.auth-blob-1 {
+  width: 18rem;
+  height: 18rem;
+  top: -4rem;
+  left: -3rem;
+  background: linear-gradient(130deg, #6366f1, #a855f7);
+}
+
+.auth-blob-2 {
+  width: 16rem;
+  height: 16rem;
+  right: -3rem;
+  bottom: -3rem;
+  background: linear-gradient(130deg, #ec4899, #6366f1);
+  animation-delay: 0.8s;
+}
+
+.auth-card,
+.auth-visual {
+  animation: authCardIn 420ms ease-out both;
+}
+
+.auth-visual {
+  animation-delay: 90ms;
+}
+
+.auth-grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(99, 102, 241, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.09) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.floating-panel {
+  animation: authPanelFloat 4.8s ease-in-out infinite;
+}
+
+.floating-panel-delay {
+  animation-delay: 0.9s;
+}
+
