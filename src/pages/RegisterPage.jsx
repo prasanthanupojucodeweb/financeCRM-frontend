@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthLayout from '../components/AuthLayout'
+import { apiFetch } from '../utils/api'
 
 export default function RegisterPage() {
   const navigate = useNavigate()
@@ -31,20 +32,14 @@ export default function RegisterPage() {
 
     try {
       setLoading(true)
-      const res = await fetch('https://financecrm-backend.onrender.com/api/auth/register', {
+      await apiFetch('/api/auth/register', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: form.name,
           email: form.email,
           password: form.password,
         }),
       })
-
-      const data = await res.json()
-      if (!res.ok) {
-        throw new Error(data.message || 'Registration failed')
-      }
 
       setSuccess('Registration successful. Redirecting to login...')
       setForm({ name: '', email: '', password: '', confirmPassword: '' })
