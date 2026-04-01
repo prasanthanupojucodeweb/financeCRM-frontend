@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import AuthLayout from '../components/AuthLayout'
+import { apiFetch } from '../utils/api'
 
 export default function LoginPage() {
   const navigate = useNavigate()
@@ -17,16 +18,10 @@ export default function LoginPage() {
 
     try {
       setLoading(true)
-      const res = await fetch('https://financecrm-backend.onrender.com/api/auth/login', {
+      const data = await apiFetch('/api/auth/login', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       })
-
-      const data = await res.json()
-      if (!res.ok) {
-        throw new Error(data.message || 'Login failed')
-      }
 
       localStorage.setItem('fintrackr_user', JSON.stringify(data))
       navigate(from === '/login' || from === '/register' ? '/' : from, { replace: true })
