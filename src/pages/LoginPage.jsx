@@ -42,8 +42,10 @@ export default function LoginPage() {
     >
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div>
-          <label className="mb-1 block text-sm font-medium text-slate-700">Email</label>
+          <label htmlFor="login-email" className="mb-1 block text-sm font-medium text-slate-700">Email</label>
           <input
+            id="login-email"
+            name="email"
             type="email"
             placeholder="you@company.com"
             required
@@ -55,12 +57,14 @@ export default function LoginPage() {
 
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="block text-sm font-medium text-slate-700">Password</label>
+            <label htmlFor="login-password" className="block text-sm font-medium text-slate-700">Password</label>
             <Link to="/login" className="text-xs font-medium text-indigo-600 hover:text-indigo-700">
               Forgot password?
             </Link>
           </div>
           <input
+            id="login-password"
+            name="password"
             type="password"
             placeholder="Enter your password"
             required
